@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxr2loajkq54g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cnee3"]
+
+[node name="Trampoline" type="Area2D"]
+gravity_space_override = 3
+gravity_point_center = Vector2(0, -1)
+gravity_direction = Vector2(0, -1)
+gravity = 6000.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cnee3")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0, 0.882325, 0.863996, 1)
+polygon = PackedVector2Array(-7, 10, -7, -2, -10, -2, -8, -10, 0, -11, 9, -10, 10, -2, 8, -2, 8, 10)

@@ -1,0 +1,78 @@
+[gd_scene load_steps=6 format=3 uid="uid://5tmfamc3xead"]
+
+[ext_resource type="Script" uid="uid://dh1ly8sgoq3va" path="res://script/level.gd" id="1_nku54"]
+[ext_resource type="PackedScene" uid="uid://crasww6ekat41" path="res://scene/player.tscn" id="1_sh7rg"]
+[ext_resource type="PackedScene" uid="uid://bxr2loajkq54g" path="res://scene/trampoline.tscn" id="2_ot7f5"]
+[ext_resource type="PackedScene" uid="uid://be5kx14f2lgye" path="res://scene/item.tscn" id="3_11eep"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sh7rg"]
+size = Vector2(1167, 60)
+
+[node name="Level1-1" type="Node2D"]
+script = ExtResource("1_nku54")
+metadata/_edit_horizontal_guides_ = [-82.0]
+
+[node name="Player" parent="." instance=ExtResource("1_sh7rg")]
+position = Vector2(558, 273)
+
+[node name="LookMarker" type="Marker2D" parent="Player"]
+gizmo_extents = 40.0
+
+[node name="Camera2D" type="Camera2D" parent="Player/LookMarker"]
+position_smoothing_enabled = true
+drag_vertical_enabled = true
+drag_vertical_offset = -1.0
+editor_draw_drag_margin = true
+
+[node name="LevelGeometry" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelGeometry"]
+position = Vector2(573.5, 623)
+shape = SubResource("RectangleShape2D_sh7rg")
+
+[node name="Polygon2D" type="Polygon2D" parent="LevelGeometry"]
+polygon = PackedVector2Array(-14, 596, 1155, 594, 1155, 652, -14, 657)
+uv = PackedVector2Array(-14, 596, 1155, 594, 1155, 652, -14, 657)
+
+[node name="Trampoline" parent="." instance=ExtResource("2_ot7f5")]
+position = Vector2(961, 584)
+
+[node name="Item" parent="." instance=ExtResource("3_11eep")]
+position = Vector2(196, 498)
+
+[node name="Item2" parent="." instance=ExtResource("3_11eep")]
+position = Vector2(108, 531)
+
+[node name="Item3" parent="." instance=ExtResource("3_11eep")]
+position = Vector2(741, 562)
+
+[node name="Item4" parent="." instance=ExtResource("3_11eep")]
+position = Vector2(817, 565)
+
+[node name="Item5" parent="." instance=ExtResource("3_11eep")]
+position = Vector2(881, 562)
+
+[node name="Item6" parent="." instance=ExtResource("3_11eep")]
+position = Vector2(966, 497)
+
+[node name="Item8" parent="." instance=ExtResource("3_11eep")]
+position = Vector2(967, 448)
+
+[node name="Item9" parent="." instance=ExtResource("3_11eep")]
+position = Vector2(966, 407)
+
+[node name="Item10" parent="." instance=ExtResource("3_11eep")]
+position = Vector2(967, 366)
+
+[node name="Item11" parent="." instance=ExtResource("3_11eep")]
+position = Vector2(968, 318)
+
+[node name="Item7" parent="." instance=ExtResource("3_11eep")]
+position = Vector2(931, 557)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="HUD"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Score: 0"

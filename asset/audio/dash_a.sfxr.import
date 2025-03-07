@@ -1,0 +1,17 @@
+[remap]
+
+importer="com.timothyqiu.gdfxr.importer"
+type="AudioStreamWAV"
+uid="uid://baxg86ycx7hbc"
+path="res://.godot/imported/dash_a.sfxr-2adf74ef5a71d1ecada20964e5263cfe.sample"
+
+[deps]
+
+source_file="res://asset/audio/dash_a.sfxr"
+dest_files=["res://.godot/imported/dash_a.sfxr-2adf74ef5a71d1ecada20964e5263cfe.sample"]
+
+[params]
+
+loop=false
+bit_depth=0
+sample_rate=0

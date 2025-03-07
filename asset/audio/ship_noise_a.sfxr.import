@@ -1,0 +1,17 @@
+[remap]
+
+importer="com.timothyqiu.gdfxr.importer"
+type="AudioStreamWAV"
+uid="uid://kkbthdeh61bs"
+path="res://.godot/imported/ship_noise_a.sfxr-b21f0b3fd83cb448caed61fd568e5fe5.sample"
+
+[deps]
+
+source_file="res://asset/audio/ship_noise_a.sfxr"
+dest_files=["res://.godot/imported/ship_noise_a.sfxr-b21f0b3fd83cb448caed61fd568e5fe5.sample"]
+
+[params]
+
+loop=false
+bit_depth=0
+sample_rate=0

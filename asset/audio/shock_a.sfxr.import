@@ -1,0 +1,17 @@
+[remap]
+
+importer="com.timothyqiu.gdfxr.importer"
+type="AudioStreamWAV"
+uid="uid://gqibgjvlxaqa"
+path="res://.godot/imported/shock_a.sfxr-5e5eae9c454517442461991438f94e83.sample"
+
+[deps]
+
+source_file="res://asset/audio/shock_a.sfxr"
+dest_files=["res://.godot/imported/shock_a.sfxr-5e5eae9c454517442461991438f94e83.sample"]
+
+[params]
+
+loop=false
+bit_depth=0
+sample_rate=0

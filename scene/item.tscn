@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://be5kx14f2lgye"]
+
+[ext_resource type="Script" uid="uid://dapif8lyx8vp3" path="res://script/item.gd" id="1_4w2rt"]
+[ext_resource type="AudioStream" uid="uid://bdyxyp6217dod" path="res://asset/audio/item_a.sfxr" id="2_akoh1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_akoh1"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vng7q"]
+random_pitch = 1.03
+random_volume_offset_db = 0.5
+streams_count = 1
+stream_0/stream = ExtResource("2_akoh1")
+
+[sub_resource type="Curve" id="Curve_akoh1"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_vng7q"]
+curve = SubResource("Curve_akoh1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7anpq"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 6.0
+direction = Vector3(0, -1, 0)
+spread = 90.0
+initial_velocity_min = 30.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 98, 0)
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_vng7q")
+
+[node name="Item" type="Area2D"]
+script = ExtResource("1_4w2rt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_akoh1")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.947566, 0.733538, 7.70092e-07, 1)
+polygon = PackedVector2Array(0, -10, 3, -4, 9, -4, 5, 0, 6, 7, 0, 4, -6, 7, -5, 0, -9, -4, -3, -4)
+
+[node name="AudioPickup" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_vng7q")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 32
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_7anpq")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,17 @@
+[remap]
+
+importer="com.timothyqiu.gdfxr.importer"
+type="AudioStreamWAV"
+uid="uid://csh33ltgjs7j4"
+path="res://.godot/imported/game_over_b.sfxr-8fb3f2323f276d9fe7f4724eff317d82.sample"
+
+[deps]
+
+source_file="res://asset/audio/game_over_b.sfxr"
+dest_files=["res://.godot/imported/game_over_b.sfxr-8fb3f2323f276d9fe7f4724eff317d82.sample"]
+
+[params]
+
+loop=false
+bit_depth=0
+sample_rate=0
