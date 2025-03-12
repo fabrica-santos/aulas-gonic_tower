@@ -4,7 +4,10 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
+@export var death_zone: Area2D
+
 var dash_multiplier = 1.0
+var was_on_floor = false
 
 @onready var look_marker: Marker2D = $LookMarker
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -14,11 +17,10 @@ var dash_multiplier = 1.0
 @onready var dust_particles: GPUParticles2D = $DustParticles
 
 
-var was_on_floor = false
-
-
 func _ready() -> void:
 	crouch_timer.timeout.connect(on_crouch_timeout)
+	if death_zone != null:
+		death_zone.body_entered.connect(_on_death_zone_entered)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -73,3 +75,7 @@ func _physics_process(delta: float) -> void:
 
 func on_crouch_timeout() -> void:
 	look_marker.position.y = 300
+
+
+func _on_death_zone_entered(body: Node2D) -> void:
+	get_tree().reload_current_scene()

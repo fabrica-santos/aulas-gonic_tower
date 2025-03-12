@@ -1,19 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://5tmfamc3xead"]
+[gd_scene load_steps=8 format=3 uid="uid://5tmfamc3xead"]
 
 [ext_resource type="Script" uid="uid://dh1ly8sgoq3va" path="res://script/level.gd" id="1_nku54"]
 [ext_resource type="PackedScene" uid="uid://crasww6ekat41" path="res://scene/player.tscn" id="1_sh7rg"]
 [ext_resource type="PackedScene" uid="uid://bxr2loajkq54g" path="res://scene/trampoline.tscn" id="2_ot7f5"]
 [ext_resource type="PackedScene" uid="uid://be5kx14f2lgye" path="res://scene/item.tscn" id="3_11eep"]
+[ext_resource type="PackedScene" uid="uid://djcl6thvxk4hl" path="res://scene/pause_menu.tscn" id="5_vnih4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sh7rg"]
 size = Vector2(1167, 60)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vnih4"]
 
 [node name="Level1-1" type="Node2D"]
 script = ExtResource("1_nku54")
 metadata/_edit_horizontal_guides_ = [-82.0]
 
-[node name="Player" parent="." instance=ExtResource("1_sh7rg")]
+[node name="Player" parent="." node_paths=PackedStringArray("death_zone") instance=ExtResource("1_sh7rg")]
 position = Vector2(558, 273)
+death_zone = NodePath("../DeathZone")
 
 [node name="LookMarker" type="Marker2D" parent="Player"]
 gizmo_extents = 40.0
@@ -76,3 +80,11 @@ position = Vector2(931, 557)
 offset_right = 40.0
 offset_bottom = 23.0
 text = "Score: 0"
+
+[node name="PauseMenu" parent="HUD" instance=ExtResource("5_vnih4")]
+
+[node name="DeathZone" type="Area2D" parent="."]
+position = Vector2(587, 997)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone"]
+shape = SubResource("WorldBoundaryShape2D_vnih4")
