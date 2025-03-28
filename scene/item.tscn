@@ -31,6 +31,8 @@ scale_max = 2.0
 scale_curve = SubResource("CurveTexture_vng7q")
 
 [node name="Item" type="Area2D"]
+collision_layer = 8
+collision_mask = 2
 script = ExtResource("1_4w2rt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

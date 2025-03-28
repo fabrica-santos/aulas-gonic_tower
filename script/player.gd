@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+signal died
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -78,4 +79,4 @@ func on_crouch_timeout() -> void:
 
 
 func _on_death_zone_entered(body: Node2D) -> void:
-	get_tree().reload_current_scene()
+	died.emit()

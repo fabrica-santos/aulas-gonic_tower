@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbrtsmibv1ol6"]
+
+[ext_resource type="Script" uid="uid://et4hnnpif4k7" path="res://script/obstacle.gd" id="1_p1pd2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cf7vm"]
+
+[node name="Obstacle" type="Node2D"]
+script = ExtResource("1_p1pd2")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_cf7vm")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.870514, 0.284108, 0.26, 1)
+polygon = PackedVector2Array(-10, 10, -9, -10, -8, 8, -7, -10, -4, 3, -2, -10, 1, 2, 4, -10, 7, 2, 9, -10, 10, 10)
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

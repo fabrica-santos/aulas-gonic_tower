@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://5tmfamc3xead"]
+[gd_scene load_steps=10 format=3 uid="uid://5tmfamc3xead"]
 
 [ext_resource type="Script" uid="uid://dh1ly8sgoq3va" path="res://script/level.gd" id="1_nku54"]
 [ext_resource type="PackedScene" uid="uid://crasww6ekat41" path="res://scene/player.tscn" id="1_sh7rg"]
 [ext_resource type="PackedScene" uid="uid://bxr2loajkq54g" path="res://scene/trampoline.tscn" id="2_ot7f5"]
 [ext_resource type="PackedScene" uid="uid://be5kx14f2lgye" path="res://scene/item.tscn" id="3_11eep"]
 [ext_resource type="PackedScene" uid="uid://djcl6thvxk4hl" path="res://scene/pause_menu.tscn" id="5_vnih4"]
+[ext_resource type="PackedScene" uid="uid://bnkwubam3wsfs" path="res://scene/death_screen.tscn" id="6_2wg1i"]
+[ext_resource type="PackedScene" uid="uid://cbrtsmibv1ol6" path="res://scene/obstacle.tscn" id="7_y1pbm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sh7rg"]
 size = Vector2(1167, 60)
@@ -83,8 +85,17 @@ text = "Score: 0"
 
 [node name="PauseMenu" parent="HUD" instance=ExtResource("5_vnih4")]
 
+[node name="DeathScreen" parent="HUD" instance=ExtResource("6_2wg1i")]
+
 [node name="DeathZone" type="Area2D" parent="."]
 position = Vector2(587, 997)
+collision_layer = 32
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone"]
 shape = SubResource("WorldBoundaryShape2D_vnih4")
+
+[node name="Obstacle" parent="." instance=ExtResource("7_y1pbm")]
+position = Vector2(299, 591)
+
+[connection signal="died" from="Player" to="HUD/DeathScreen" method="_on_player_died"]
